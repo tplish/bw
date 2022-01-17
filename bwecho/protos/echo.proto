@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package bwecho;
+
+option go_package = ".;protos";
+
+message EchoReq {
+  string msg = 1;
+}
+
+message EchoResp {
+  string msg = 1;
+}
+
+service BwEcho {
+  rpc Echo(EchoReq) returns(EchoResp){}
+}

@@ -1,0 +1,25 @@
+syntax = "proto3";
+package bwapi;
+option go_package = ".;protos";
+
+import "google/api/annotations.proto";
+
+message Item {
+  uint32 item_id = 1;
+}
+
+message ListItemsReq {
+}
+
+message ListItemsResp {
+  repeated Item items = 1;
+}
+
+service BwApi {
+  rpc ListItems(ListItemsReq) returns(ListItemsResp){
+    option (google.api.http) = {
+      post: "/api/list_items"
+      body: "*"
+    };
+  }
+}
